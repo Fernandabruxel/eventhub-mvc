@@ -1,0 +1,21 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<main class="container">
+  <%- include('../partials/alerts') %>
+  <h1>Minhas inscricoes</h1>
+
+  <div class="grid-cards">
+    <% if (inscricoes.length === 0) { %>
+      <p>Voce ainda nao se inscreveu em nenhum evento.</p>
+    <% } %>
+    <% inscricoes.forEach(i => { %>
+      <div class="card card-evento">
+        <h3><%= i.titulo %></h3>
+        <p class="card-meta"> <%= new Date(i.data_evento).toLocaleDateString('pt-BR') %> às <%= i.horario %></p>
+        <p class="card-meta"> <%= i.local %></p>
+        <p class="card-meta">Inscrito em <%= new Date(i.data_inscricao).toLocaleDateString('pt-BR') %></p>
+      </div>
+    <% }) %>
+  </div>
+</main>
+<%- include('../partials/footer') %>

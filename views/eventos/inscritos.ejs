@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<main class="container">
+  <%- include('../partials/alerts') %>
+  <h1>Inscritos - <%= evento.titulo %></h1>
+  <p class="card-meta"><%= inscritos.length %>/<%= evento.capacidade %> vagas preenchidas</p>
+
+  <table class="table">
+    <thead>
+      <tr><th>Nome</th><th>Email</th><th>Data da inscricao</th></tr>
+    </thead>
+    <tbody>
+      <% if (inscritos.length === 0) { %>
+        <tr><td colspan="3">Nenhum inscrito ainda.</td></tr>
+      <% } %>
+      <% inscritos.forEach(i => { %>
+        <tr>
+          <td><%= i.nome %></td>
+          <td><%= i.email %></td>
+          <td><%= new Date(i.data_inscricao).toLocaleString('pt-BR') %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</main>
+<%- include('../partials/footer') %>

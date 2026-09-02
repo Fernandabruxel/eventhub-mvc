@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<main class="container container-form">
+  <div class="card">
+    <h1>Criar evento</h1>
+    <%- include('../partials/alerts') %>
+    <form method="POST" action="/eventos/criar">
+      <label for="titulo">Titulo</label>
+      <input type="text" id="titulo" name="titulo" required>
+
+      <label for="descricao">Descricao</label>
+      <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+      <label for="data_evento">Data</label>
+      <input type="date" id="data_evento" name="data_evento" required>
+
+      <label for="horario">Horario</label>
+      <input type="time" id="horario" name="horario" required>
+
+      <label for="local">Local</label>
+      <input type="text" id="local" name="local" required>
+
+      <label for="capacidade">Capacidade</label>
+      <input type="number" id="capacidade" name="capacidade" min="1" required>
+
+      <button type="submit" class="btn btn-primary btn-full">Criar evento</button>
+    </form>
+  </div>
+</main>
+<%- include('../partials/footer') %>

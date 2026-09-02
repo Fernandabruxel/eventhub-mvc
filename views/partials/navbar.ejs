@@ -1,0 +1,19 @@
+<nav class="navbar">
+  <a href="/eventos" class="navbar-brand">Event<span>Hub</span></a>
+  <div class="navbar-links">
+    <a href="/eventos">Eventos</a>
+    <% if (usuarioLogado) { %>
+      <% if (usuarioLogado.tipo === 'organizador') { %>
+        <a href="/eventos/meus-eventos">Meus eventos</a>
+        <a href="/eventos/criar">Criar evento</a>
+      <% } else { %>
+        <a href="/inscricoes/minhas-inscricoes">Minhas inscricoes</a>
+      <% } %>
+      <span class="navbar-user">Ola, <%= usuarioLogado.nome %></span>
+      <a href="/auth/logout" class="btn-nav-sair">Sair</a>
+    <% } else { %>
+      <a href="/auth/login">Entrar</a>
+      <a href="/auth/cadastro" class="btn-nav-cadastro">Cadastrar</a>
+    <% } %>
+  </div>
+</nav>

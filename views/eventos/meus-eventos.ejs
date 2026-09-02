@@ -1,0 +1,31 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+<main class="container">
+  <%- include('../partials/alerts') %>
+  <div class="page-heading">
+    <h1>Meus eventos</h1>
+    <a href="/eventos/criar" class="btn btn-primary">+ Criar evento</a>
+  </div>
+
+  <div class="grid-cards">
+    <% if (eventos.length === 0) { %>
+      <p>Voce ainda nao criou nenhum evento.</p>
+    <% } %>
+    <% eventos.forEach(evento => { %>
+      <div class="card card-evento">
+        <h3><%= evento.titulo %></h3>
+        <p class="card-meta"> <%= new Date(evento.data_evento).toLocaleDateString('pt-BR') %> às <%= evento.horario %></p>
+        <p class="card-meta"> <%= evento.local %></p>
+        <p class="card-meta"> <%= evento.total_inscritos %>/<%= evento.capacidade %> vagas</p>
+        <div class="card-actions">
+          <a href="/eventos/<%= evento.id %>/inscritos" class="btn btn-outline">Inscritos</a>
+          <a href="/eventos/<%= evento.id %>/editar" class="btn btn-outline">Editar</a>
+          <form method="POST" action="/eventos/<%= evento.id %>/excluir" onsubmit="return confirm('Deseja realmente excluir este evento?');">
+            <button type="submit" class="btn btn-danger">Excluir</button>
+          </form>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+</main>
+<%- include('../partials/footer') %>
